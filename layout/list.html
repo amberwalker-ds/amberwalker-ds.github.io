@@ -1,5 +1,31 @@
 <h1>{{ title }}</h1>
-{{ content }}
-<section>
-<a class="rss" href="{{ base_path }}/{{ blog }}/rss.xml">RSS</a>
-</section>
+
+<!-- Category Filter -->
+<div id="filter">
+    <label for="category">Filter by Category:</label>
+    <select id="category" onchange="filterProjects()">
+        <option value="all">All</option>
+        <option value="category1">Category 1</option>
+        <option value="category2">Category 2</option>
+        <!-- Add more options as needed -->
+    </select>
+</div>
+
+<!-- Projects Grid -->
+<div class="projects-grid">
+    {{ content }}
+</div>
+
+<script>
+function filterProjects() {
+    const filter = document.getElementById('category').value;
+    const projects = document.querySelectorAll('.project-item');
+    projects.forEach(project => {
+        if (filter === 'all' || project.classList.contains(filter)) {
+            project.style.display = 'block';
+        } else {
+            project.style.display = 'none';
+        }
+    });
+}
+</script>

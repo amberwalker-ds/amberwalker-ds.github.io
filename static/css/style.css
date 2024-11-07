@@ -1,9 +1,10 @@
 /* General */
+/* General styling for all text */
 body {
-    margin: 0;
-    line-height: 1.5em;
-    color: #333333;
-    font-family: helvetica, arial, sans-serif;
+    font-family: Helvetica; /* Set your preferred font */
+    font-size: 19px; /* Set the font size for the entire page */
+    line-height: 1.6; /* Adjust line spacing for readability */
+    color: #090909; /* Set a consistent text color */
 }
 
 img {
@@ -12,9 +13,26 @@ img {
 }
 
 h1, h2, h3, h4, h5, h6 {
+    font-size: inherit;
+    line-height: inherit;
     margin-bottom: 0;
     line-height: 1.2em;
     margin-top: 1em;
+}
+
+/* Increase font size for titles */
+h1 {
+    font-size: 2.5em; /* Adjust as needed */
+    font-weight: bold;
+    margin-top: 1em; /* Optional: add some spacing above */
+    margin-bottom: 0.5em; /* Optional: add spacing below */
+}
+
+h2 {
+    font-size: 2em; /* Adjust as needed */
+    font-weight: bold;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
 }
 
 a:link, a:visited {
@@ -30,7 +48,7 @@ a:hover, a:active {
 
 /* Single column layout */
 nav section, header section, main, footer section {
-    max-width: 40em;
+    max-width: 45em;
     margin-left: auto;
     margin-right: auto;
     padding: 0 0.5em;
@@ -89,8 +107,9 @@ footer a:last-child {
 
 /* Posts */
 article {
-    margin-top: 1em;
-    margin-bottom: 1em;
+    max-width: 900px; /* Adjust width here */
+    margin: 1em auto; /* Center it horizontally */
+    padding: 5px; /* Optional: Add padding for spacing */
 }
 
 article h2 a:link, article h2 a:visited,
@@ -142,4 +161,108 @@ div .more {
 
 .rss:hover, .rss:active {
     background: #ff8822;
+}
+
+.featured-image {
+    width: 100%;
+    height: auto;
+}
+
+.featured-image[src=""] {
+    content: url('/assets/images/videoblocks-couple-practicing-exercise-in-home-for-covid19-prevention-method-4k-video-animation_rfvfyid6i_thumbnail-360_02.jpg'); /* Replace with your default image path */
+}
+
+/* Adjust font and line spacing for blog posts */
+.article-content p {
+    font-size: inherit;
+    line-height: inherit;/* Double line spacing */
+    font-family: Helvetica; /* or choose your preferred font */
+    margin-bottom: 1em; /* space between paragraphs */
+}
+
+/* Additional styles for better readability */
+.article-content {
+    max-width: 900px;
+    margin: auto;
+    color: inherit; /* Dark text color */
+}
+
+.about-image {
+    float: left;               /* Floats the image to the left */
+    margin-right: 50px;        /* Adds space between image and text */
+    width: 250px;              /* Sets a fixed width for the image */
+    max-width: 100%;           /* Ensures responsiveness */
+    text-align: center;        /* Centers the caption */
+}
+
+.about-image img {
+    width: 100%;               /* Makes the image take up full width of the .about-image container */
+    height: auto;              /* Maintains aspect ratio */
+    border-radius: 8px;        /* Optional: rounds the image corners */
+}
+
+.about-image figcaption {
+    font-size: 0.85em;         /* Slightly smaller caption font */
+    color: #555;               /* Gray color for caption */
+    margin-top: 0.5em;         /* Adds space between image and caption */
+    text-align: center;
+}
+
+#topBtn {
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed position */
+    bottom: 20px; /* Place it 20px from the bottom */
+    right: 20px; /* Place it 20px from the right */
+    z-index: 99; /* Ensure it sits on top of other elements */
+    font-size: 16px; /* Adjust font size */
+    padding: 10px 15px; /* Button padding */
+    background-color: #333; /* Dark background */
+    color: white; /* White text */
+    border: none; /* Remove borders */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    opacity: 0.7; /* Slight transparency */
+}
+
+#topBtn:hover {
+    background-color: #555; /* Darker background on hover */
+}
+/* Projects Grid */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjust column width */
+    gap: 20px; /* Space between items */
+    margin: 20px 0;
+}
+
+/* Individual Project Item */
+.project-item {
+    background: #f9f9f9;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    transition: box-shadow 0.3s;
+}
+
+.project-item:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Featured Image */
+.project-item .featured-image {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+/* Filter Styling */
+#filter {
+    margin-bottom: 20px;
+}
+
+#filter select {
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
 }
