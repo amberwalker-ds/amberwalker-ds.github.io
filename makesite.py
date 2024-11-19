@@ -228,7 +228,8 @@ def main():
                page_layout, **params)
     make_pages('content/_blog.html', '_site/blog.html',
                page_layout, **params)
-
+    make_pages('content/resume.html', '_site/resume.html',
+               page_layout, **params)
 
     # Create blogs.
     # blog_posts = make_pages('content/blog/*.md',
