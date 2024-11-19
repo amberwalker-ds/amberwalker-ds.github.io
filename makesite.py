@@ -226,7 +226,7 @@ def main():
                page_layout, **params)
     make_pages('content/privacy-terms.html', '_site/privacy-terms.html', 
                page_layout, **params)
-    make_pages('content/_blog.html', '_site/blog.html',
+    make_pages('content/blog.html', '_site/blog.html',
                page_layout, **params)
     make_pages('content/resume.html', '_site/resume.html',
                page_layout, **params)
