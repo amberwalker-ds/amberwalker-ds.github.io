@@ -1,6 +1,6 @@
-<article class="project-item {{ category }}"> <!-- Add category as a class -->
-    <img src="{{ featured_image }}" alt="{{ title }}" class="featured-image">
-    <h2><a href="{{ base_path }}/{{ blog }}/{{ slug }}/">{{ title }}</a></h2>
+<article class="post project-item" data-categories="{{ categories }}">
+    <h4><a href="{{ base_path }}/{{ blog }}/{{ slug }}/" class="medium-articles">{{ title }}</a></h4>
+    <img src="{{ featured_image }}" alt="datawithamber" class="featured-image">
     <p class="meta">Published on {{ date }} by <b>{{ author }}</b></p>
     <p class="summary">
         {{ summary }}&nbsp;<a class="more" href="{{ base_path }}/{{ blog }}/{{ slug }}/">...</a>

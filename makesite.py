@@ -35,7 +35,6 @@ import sys
 import json
 import datetime
 
-
 def fread(filename):
     """Read file and close the file."""
     with open(filename, 'r') as f:
@@ -85,19 +84,20 @@ def read_content(filename):
     date_slug = os.path.basename(filename).split('.')[0]
     match = re.search(r'^(?:(\d\d\d\d-\d\d-\d\d)-)?(.+)$', date_slug)
     content = {
-        'date': match.group(1) or '1970-01-01',
+        'date': match.group(1) or '2024-11-01',
         'slug': match.group(2),
     }
 
-    # Read headers.
     end = 0
     for key, val, end in read_headers(text):
-        content[key] = val
+        if key == 'categories':
+            # Split categories by comma and trim whitespace, then join them back to a single string
+            content['categories'] = ', '.join([cat.strip() for cat in val.split(',')])
+        else:
+            content[key] = val
 
-    # Separate content from headers.
     text = text[end:]
 
-    # Convert Markdown content to HTML.
     if filename.endswith(('.md', '.mkd', '.mkdn', '.mdown', '.markdown')):
         try:
             import commonmark
@@ -105,11 +105,9 @@ def read_content(filename):
         except ImportError as e:
             log('WARNING: Cannot render Markdown in {}: {}', filename, str(e))
 
-    # Update the dictionary with content and RFC 2822 date.
     content.update({
         'content': text,
         'rfc_2822_date': rfc_2822_format(content['date']),
-        'category': content.get('category', 'uncategorized')  # Default to 'uncategorized' if not specified
     })
 
     return content
@@ -117,9 +115,26 @@ def read_content(filename):
 
 def render(template, **params):
     """Replace placeholders in template with values from params."""
-    return re.sub(r'{{\s*([^}\s]+)\s*}}',
-                  lambda match: str(params.get(match.group(1), match.group(0))),
-                  template)
+    print("Rendering template with params:", params)  # Debug line
+
+    def replace_placeholder(match):
+        expression = match.group(1).strip()
+        print("Processing expression:", expression)  # Debug line
+
+        # Check for expressions with filters like "join"
+        if "|" in expression:
+            var_name, filter_expression = map(str.strip, expression.split("|", 1))
+            print("Variable:", var_name, "Filter:", filter_expression)  # Debug line
+            if filter_expression.startswith("join"):
+                delimiter = filter_expression.split(":")[-1].strip().strip("'\"")
+                value = params.get(var_name, [])
+                if isinstance(value, list):
+                    return delimiter.join(value)
+        
+        # If it's a simple variable, just replace it directly
+        return str(params.get(expression, match.group(0)))
+    
+    return re.sub(r'{{\s*([^}\s]+.*?)\s*}}', replace_placeholder, template)
 
 
 def make_pages(src, dst, layout, **params):
@@ -130,6 +145,8 @@ def make_pages(src, dst, layout, **params):
         content = read_content(src_path)
 
         page_params = dict(params, **content)
+        print("Page parameters for:", src_path)
+        print(page_params)  
 
         # Populate placeholders in content if content-rendering is enabled.
         if page_params.get('render') == 'yes':
@@ -141,6 +158,8 @@ def make_pages(src, dst, layout, **params):
 
         dst_path = render(dst, **page_params)
         output = render(layout, **page_params)
+        print("Rendered HTML for", dst_path)
+        print(output)
 
         log('Rendering {} => {} ...', src_path, dst_path)
         fwrite(dst_path, output)
@@ -175,8 +194,8 @@ def main():
     # Default parameters.
     params = {
         'base_path': '',
-        'subtitle': 'Lorem Ipsum',
-        'author': 'Admin',
+        'subtitle': 'Data with Amber',
+        'author': 'Amber Walker',
         'site_url': 'http://localhost:8000',
         'current_year': datetime.datetime.now().year
     }
@@ -197,29 +216,37 @@ def main():
     post_layout = render(page_layout, content=post_layout)
     list_layout = render(page_layout, content=list_layout)
 
+    # Create the pages
+    make_pages('content/_index.html', '_site/index.html', page_layout, **params)
+
     # Create site pages.
     make_pages('content/_index.html', '_site/index.html',
                page_layout, **params)
     make_pages('content/[!_]*.html', '_site/{{ slug }}/index.html',
                page_layout, **params)
+    make_pages('content/privacy-terms.html', '_site/privacy-terms.html', 
+               page_layout, **params)
+    make_pages('content/_blog.html', '_site/blog.html',
+               page_layout, **params)
+
 
     # Create blogs.
-    blog_posts = make_pages('content/blog/*.md',
-                            '_site/blog/{{ slug }}/index.html',
-                            post_layout, blog='blog', **params)
-    projects_posts = make_pages('content/projects/*.html',
+    # blog_posts = make_pages('content/blog/*.md',
+    #                         '_site/blog/{{ slug }}/index.html',
+    #                         post_layout, blog='blog', **params)
+    projects_posts = make_pages('content/projects/*.md',
                             '_site/projects/{{ slug }}/index.html',
                             post_layout, blog='projects', **params)
 
     # Create blog list pages.
-    make_list(blog_posts, '_site/blog/index.html',
-              list_layout, item_layout, blog='blog', title='Blog', **params)
+    # make_list(blog_posts, '_site/blog/index.html',
+    #           list_layout, item_layout, blog='blog', title='Blog', **params)
     make_list(projects_posts, '_site/projects/index.html',
               list_layout, item_layout, blog='projects', title='Projects', **params)
 
     # Create RSS feeds.
-    make_list(blog_posts, '_site/blog/rss.xml',
-              feed_xml, item_xml, blog='blog', title='Blog', **params)
+    # make_list(blog_posts, '_site/blog/rss.xml',
+    #           feed_xml, item_xml, blog='blog', title='Blog', **params)
     make_list(projects_posts, '_site/projects/rss.xml',
               feed_xml, item_xml, blog='projects', title='Projects', **params)
 

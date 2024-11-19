@@ -2,10 +2,20 @@
 <html>
 <head>
     <title>{{ title }} - {{ subtitle }}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Acme&family=Faculty+Glyphic&family=Sawarabi+Mincho&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" type="text/css" href="{{ base_path }}/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JVMXGH2BL4"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-JVMXGH2BL4');
+    </script>
 </head>
 
 <body id="{{ slug }}">
@@ -32,12 +42,14 @@
 
 <footer>
 <section>
-<p>&copy; {{ current_year }} Lorem Ipsum</p>
+<p>&copy; {{ current_year }} Data With Amber</p>
 <p>
-    <a href="https://twitter.com/sunainapai">Twitter</a>
-    <a href="https://github.com/sunainapai">GitHub</a>
-    <a href="https://www.example.com/">Example</a>
+    <a href="https://www.linkedin.com/in/amber-walker-/">LinkedIn</a>
+    <a href="https://github.com/amberwalker-ds">GitHub</a>
+    <a href="/privacy-terms.html">Privacy Policy & Terms of Service</a>
+
 </p>
+<script src="https://www.twilik.com/assets/retainable/rss-embed/retainable-rss-embed.js"></script>
 </section>
 </footer>
 

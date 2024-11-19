@@ -1,7 +1,33 @@
 <article> <h1><a href="{{ base_path }}/{{ blog }}/{{ slug }}/">{{ title }}</a></h1> 
     <p class="meta">Published on {{ date }} by <b>{{ author }}</b></p>
-    
+<!-- Comments Count Link (Place at the top of your post) -->
+    <div id="comment-count" style="font-size: 14px; color: #2a0bee;">
+        <a href="#comments" style="text-decoration: none; color: inherit;">
+            Comments: <span id="comment-number">0</span>
+        </a>
+    </div>
     <div class="article-content">
         {{ content }}
     </div>
+    <div class="post-interactions">
+        <!-- Share Button -->
+        <!-- <button class="share-button" onclick="handleShare()">
+            <i class="fas fa-share"></i> Share
+        </button> -->
+    
+        <!-- Comment Section (Initially Hidden) -->
+        <div id="comments"></div>
+        <script src="https://utteranc.es/client.js"
+                repo="amberwalker-ds/amberwalker-ds.github.io"
+                issue-term="pathname"
+                label="Comment"
+                theme="github-light"
+                crossorigin="anonymous"
+                async>
+        </script>
+    </div>
+    <button onclick="topFunction()" id="topBtn" title="Go to top">Top</button>
+
 </article>
+
+<script src="/js/scripts.js"></script>

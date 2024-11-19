@@ -5,26 +5,43 @@
     <label for="category">Filter by Category:</label>
     <select id="category" onchange="filterProjects()">
         <option value="all">All</option>
-        <option value="category1">NLP</option>
-        <option value="category2">Category 2</option>
+        <option value="computer_vision">Computer Vision</option>
+        <option value="causal_inference">Causal Inference</option>
+        <option value="NLP">Natural Language Processing</option>
+        <option value="stock_prediction">Stock Prediction</option>
         <!-- Add more options as needed -->
     </select>
 </div>
 
 <!-- Projects Grid -->
 <div class="projects-grid">
+    <!-- Example project structure -->
     {{ content }}
 </div>
 
 <script>
 function filterProjects() {
     const filter = document.getElementById('category').value;
-    const projects = document.querySelectorAll('.project-item');
+    const projects = document.querySelectorAll('.post');
+
+    console.log('Selected filter:', filter); // Check selected filter value
+
     projects.forEach(project => {
-        if (filter === 'all' || project.classList.contains(filter)) {
-            project.style.display = 'block';
+        // Attempt to get the data-categories attribute and split it
+        const dataCategories = project.getAttribute('data-categories');
+
+        if (dataCategories) {
+            const categories = dataCategories.split(',').map(cat => cat.trim());
+            console.log('Project categories:', categories); // Check parsed categories
+
+            if (filter === 'all' || categories.includes(filter)) {
+                project.style.display = 'block';
+            } else {
+                project.style.display = 'none';
+            }
         } else {
-            project.style.display = 'none';
+            console.error('No data-categories attribute found on project:', project);
+            project.style.display = 'none'; // Hide if no categories are found
         }
     });
 }
