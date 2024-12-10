@@ -57,7 +57,10 @@
         const outputDiv = document.getElementById('output');
         const predictedPrice = document.getElementById('predicted-price');
         form.addEventListener('submit', async (event) => {
-            event.preventDefault();           
+            event.preventDefault();
+            // show loading spinne
+            spinner.style.display = 'block';
+            outputDiv.style.display = 'none';           
             const formData = new FormData(form);
             const data = {
                 make: formData.get('make'),
@@ -85,6 +88,8 @@
             } catch (error) {
                 predictedPrice.textContent = 'Error connecting to the server. Please try again.';
                 outputDiv.style.display = 'block';
+            } finally {
+                spinner.style.display = 'none';
             }
         });
     </script>
