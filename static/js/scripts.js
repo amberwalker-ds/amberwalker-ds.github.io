@@ -83,30 +83,29 @@ function topFunction() {
 function topFunction() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
+// // medium posts
+// $(function () {
+//     const mediumUsername = "datawithamber";
+//     const rssUrl = `https://medium.com/feed/@${mediumUsername}`;
+//     const encodedRssUrl = encodeURIComponent(rssUrl); // Encode the RSS URL
+//     const apiKey = "<0wcawc7fpx3fn11bbbhipkwancfor7aia4siav8b>"; // Replace with your actual API key
 
-// medium posts
-$(function () {
-    const mediumUsername = "datawithamber";
-    const rssUrl = `https://medium.com/feed/@${mediumUsername}`;
-    const encodedRssUrl = encodeURIComponent(rssUrl); // Encode the RSS URL
-    const apiKey = "<0wcawc7fpx3fn11bbbhipkwancfor7aia4siav8b>"; // Replace with your actual API key
-
-    $.ajax({
-        url: 'https://api.rss2json.com/v1/api.json',
-        method: 'GET',
-        dataType: 'json',
-        data: {
-            rss_url: encodedRssUrl,
-            api_key: apiKey
-        }
-    }).done(function (response) {
-        if (response.status === 'ok') {
-            console.log("Successfully fetched Medium articles:", response);
-            // Process and display articles
-        } else {
-            console.error("Error fetching articles:", response.message);
-        }
-    }).fail(function (error) {
-        console.error("AJAX request failed:", error);
-    });
-});
+//     $.ajax({
+//         url: 'https://api.rss2json.com/v1/api.json',
+//         method: 'GET',
+//         dataType: 'json',
+//         data: {
+//             rss_url: encodedRssUrl,
+//             api_key: apiKey
+//         }
+//     }).done(function (response) {
+//         if (response.status === 'ok') {
+//             console.log("Successfully fetched Medium articles:", response);
+//             // Process and display articles
+//         } else {
+//             console.error("Error fetching articles:", response.message);
+//         }
+//     }).fail(function (error) {
+//         console.error("AJAX request failed:", error);
+//     });
+// });

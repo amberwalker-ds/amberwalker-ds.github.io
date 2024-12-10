@@ -1,14 +1,21 @@
 <!-- title: Used Car Price Prediction -->
 <!-- featured_image: https://raw.githubusercontent.com/amberwalker-ds/amberwalker-ds.github.io/master/assets/images/cars.jpg-->
 <!-- categories: price_prediction -->
+<figure>
+    <img src="https://raw.githubusercontent.com/amberwalker-ds/amberwalker-ds.github.io/master/assets/images/cars.jpg" 
+    alt="double machine learning" width="1000" height="700">
+</figure>
 <body>
     <p> This project is part of a larger initiative I’m working on for my contracted role as a data scientist. The goal? To build a machine learning model that predicts the market price of used cars and helps identify the best car listing deals in Latvia. 🚘
     </p>
+    <p> The dataset used in this project spans from 2018 to 2023 and is part of the Latvian Used-car Market Announcements Monitoring initiative, ran by Valerijs Skribans, Aivars Gulbis, and Aivars Krastins. The monitoring began in 2018 in response to Germany's Federal Administrative Court decision allowing diesel car bans to reduce air pollution.
+    </p>
+    <p> Using this dataset, I trained an XGBoost model and achieved an R² score of 0.96, demonstrating the model's high accuracy in predicting used car prices. </p>
     <p>
-    For this milestone, I deployed my first AI-powered web service using Flask, Docker, and Google Cloud. From handling features like mileage and fuel type to finding the best car deals, this project gave me hands-on experience building, testing and deploying machine learning models in production! 🌟
+    For this milestone, I deployed my first ML-powered web service using Flask, Docker, GitHub Actions for CI/CD and Google Cloud Run. From handling features like mileage and fuel type to finding the best car deals, this project gave me real-world, hands-on experience building, testing and deploying machine learning models in production! 🌟
     </p>
     <div class="container">
-        <p>Enter the details of your car below to get an estimated market price. This tool uses a machine learning model trained on a comprehensive dataset of used cars.</p>   
+        <p>Try it out for yourself! Enter the details of your car below to get an estimated market price in Latvia.</p>   
         <form id="prediction-form">
             <div class="form-group">
                 <label for="make">Make:</label>
@@ -52,10 +59,15 @@
             <p id="predicted-price">...</p>
         </div>
     </div>
+    <div id="spinner" style="display: none;">
+        <p>Fetching your predicted price...</p>
+        <div class="spinner"></div>
+    </div>
     <script>
         const form = document.getElementById('prediction-form');
         const outputDiv = document.getElementById('output');
         const predictedPrice = document.getElementById('predicted-price');
+        const spinner = document.getElementById('spinner'); // Correctly reference the spinner
         form.addEventListener('submit', async (event) => {
             event.preventDefault();
             // show loading spinne
