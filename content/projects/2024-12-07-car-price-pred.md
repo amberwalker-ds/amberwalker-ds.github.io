@@ -69,7 +69,7 @@
                 gear_type: formData.get('gear_type')
             };
             try {
-            const response = await fetch('https://flask-app-488572750283.us-central1.run.app/predict', {
+            const response = await fetch('https://used-car-price-pred-app-488572750283.us-central1.run.app/predict', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data) // Ensure `data` is formatted like the Postman example
