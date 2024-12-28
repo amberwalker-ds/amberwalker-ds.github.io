@@ -1,10 +1,10 @@
 <!-- title: Interactive Ticket Insights and Trend Analysis Tableau Dashboard -->
 <!-- featured_image: https://raw.githubusercontent.com/amberwalker-ds/amberwalker-ds.github.io/master/assets/images/trend-analysis.PNG-->
 <!-- categories: data_analysis -->
-<figure>
+<!-- <figure>
     <img src="https://raw.githubusercontent.com/amberwalker-ds/amberwalker-ds.github.io/master/assets/images/trend-analysis.PNG" 
     alt="data analysis" width="1000" height="700">
-</figure>
+</figure> -->
 <body>
     <!DOCTYPE html>
 <html lang="en">
