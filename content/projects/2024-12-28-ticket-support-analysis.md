@@ -14,11 +14,35 @@
     <title>Interactive Ticket Insights and Trend Analysis Dashboard</title>
 </head>
 <body>
+<div>
     <p>
-        This was an exciting project where I was able to show the power of <strong>sentiment analysis</strong> and <strong>interactive BI visualizations</strong> to optimize customer support operations. 
-        Using a dataset of over 50,000 anonymized support tickets, advanced Natural Language Processing (NLP) techniques and a comprehensive Tableau dashboard were 
-        employed to uncover actionable insights and trends. The data can be found <a href="https://github.com/karolzak/support-tickets-classification#22-dataset" class="modern-link">here.</a>
+        This was an exciting project where I utilized <strong>sentiment analysis</strong> and 
+        <strong>interactive BI visualizations</strong> to optimize customer support operations. 
+        As a project coordinator, one of the recurring challenges we faced was managing client 
+        support tickets—primarily those reporting issues with their automation bots.
     </p>
+    <p>
+        Over time, as I processed these tickets, I started noticing patterns in the data. 
+        Many of the issues were simple fixes that didn’t require our engineers to spend time investigating. 
+        To address this, I conducted a basic data analysis using Monday.com and MS Excel to visualize 
+        the proportion of tickets that could be resolved with proper FAQ documentation. Armed with these 
+        insights, my team and I created detailed, client-facing documentation. The result? A 20% reduction 
+        in ticket volume as clients were now equipped to solve these issues independently.
+    </p>
+    <p>
+        This project inspired a personal follow-up analysis. Since I couldn’t use proprietary data, 
+        I turned to publicly available datasets and applied more advanced techniques. I upgraded my 
+        tools from Excel to <strong>Python</strong> and <strong>Tableau</strong>, performing a detailed 
+        analysis on a dataset of over 50,000 anonymized support tickets. I used advanced 
+        <strong>Natural Language Processing (NLP)</strong> techniques and built a 
+        <strong>comprehensive Tableau dashboard</strong> to uncover actionable insights and trends.
+    </p>
+    <p>
+        The dataset used for this project can be found 
+        <a href="https://github.com/karolzak/support-tickets-classification#22-dataset" class="modern-link">
+        here</a>.
+    </p>
+</div>
     <h2>Sentiment Analysis</h2>
     <p>
         I first built a <strong>sentiment analysis pipeline</strong> to evaluate the emotional tone of support tickets based on their textual descriptions. 
