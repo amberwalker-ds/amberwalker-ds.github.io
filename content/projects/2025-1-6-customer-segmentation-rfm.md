@@ -1,10 +1,10 @@
 <!-- title: Customer Segmentation with K-Means and Tableau -->
-<!-- featured_image: https://raw.githubusercontent.com/amberwalker-ds/amberwalker-ds.github.io/master/assets/images/customer-segments.png-->
+<!-- featured_image: https://raw.githubusercontent.com/amberwalker-ds/amberwalker-ds.github.io/master/assets/images/customer-segments.PNG-->
 <!-- categories: data_analysis -->
 <section id="customer-segmentation">
 <figure>
-    <img src="https://raw.githubusercontent.com/amberwalker-ds/amberwalker-ds.github.io/master/assets/images/customer-segments.png" 
-    alt="u-net deep learning model" width="1000" height="700">
+    <img src="https://raw.githubusercontent.com/amberwalker-ds/amberwalker-ds.github.io/master/assets/images/customer-segments.PNG" 
+    alt="customer-segment" width="1000" height="700">
 </figure>
   <p>
     This was a really exciting project where I was able to blend my two backgrounds (marketing and data science) to extract insights from an e-commerce dataset. The workflow includes data extraction and transformation using <strong>Google BigQuery</strong> and <strong>DBT (Data Build Tool)</strong>, clustering analysis with <strong>Python</strong>, and interactive visualization with <strong>Tableau</strong>.
