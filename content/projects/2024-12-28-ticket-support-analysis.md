@@ -5,14 +5,12 @@
     <img src="https://raw.githubusercontent.com/amberwalker-ds/amberwalker-ds.github.io/master/assets/images/trend-analysis.PNG" 
     alt="data analysis" width="1000" height="700">
 </figure> -->
-<body>
-    <!DOCTYPE html>
-<html lang="en">
-<head>
+
+<!-- <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interactive Ticket Insights and Trend Analysis Dashboard</title>
-</head>
+</head> -->
 <body>
 <div>
     <p>
