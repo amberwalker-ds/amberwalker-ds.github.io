@@ -46,7 +46,7 @@
   <figure>
     <img src="https://raw.githubusercontent.com/amberwalker-ds/amberwalker-ds.github.io/master/assets/images/main_table.PNG" 
     alt="u-net deep learning model" width="1000" height="700">
-        <figcaption>Finally I joined all of the data together (including demographics and wenb interactions) making sure to include only the customers who bought at least one completed item.</figcaption>
+        <figcaption>Finally I joined all of the data together (including demographics and web interactions) making sure to include only the customers who bought at least one completed item.</figcaption>
 </figure>
   <h3>Clustering Analysis with Python</h3>
   <p>
